@@ -6,7 +6,6 @@ const app = express();
 
 const serviceAccount = require("./maddendb-md326-firebase-adminsdk-g7ubk-c4ae1ace9a.json");
 
-// TODO: Enter your database url from firebase
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://maddendb-md326.firebaseio.com/"
