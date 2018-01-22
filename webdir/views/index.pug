@@ -1,5 +1,21 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    h1= title
+    p League Data
+
+    // Wrapper
+    #wrapper
+
+        // TEAMS LIST
+        <table id="teamsTable" class="display" cellspacing="0" width="100%">
+            thead
+                th TeamId
+                th City
+                th Team Name
+                th Injury Count
+                th Overall
+            tbody
+        // /TEAMS LIST
+
+    // /WRAPPER

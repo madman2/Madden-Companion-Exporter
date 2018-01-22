@@ -1,7 +1,9 @@
 var express = require('express');
 var admin = require('../firebase/firebase-admin')
 var router = express.Router();
+
 var db = admin.database();
+var ref = db.ref("data/xbox/1494801/leagueteams/leagueTeamInfoList");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,7 +11,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/data', function(req, res, next) {
-  res.json(db.ref());
+  ref.once("value", function(snapshot) {
+    res.json(snapshot);
+  });
 });
 
 module.exports = router;
