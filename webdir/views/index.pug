@@ -2,14 +2,13 @@ extends layout
 
 block content
     h1= title
-    p League Data
 
     // Wrapper
     #wrapper
-        <button class="statButton">League Teams</button>
-        <button class="statButton">Free Agents</button>
+        <button id="leagueTeamsBtn">League Teams</button>
+        <button id="freeAgentsBtn">Free Agents</button>
         // Data Table
-        <table id="dataTable" class="display" width="100%">
+        <table id="maddenTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
         // /Data Table
 
     // /Wrapper

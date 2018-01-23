@@ -1,10 +1,25 @@
-var dataTable;
+var maddenTable;
 
 $(document).ready(function() {
-    showData('freeagents');
+    showData('leagueteams');
+});
+
+$('#leagueTeamsBtn').click(function() {
+    showData('leagueteams');
+});
+
+$('#freeAgentsBtn').click(function() {
+    showData('freeAgents');
 });
 
 function showData(request) {
+    if (maddenTable) {
+        maddenTable.destroy();
+        $('#maddenTable').empty();
+    }
+
+    var options = {};
+
     $.getJSON('/' + request).then(function(data) {
 
         var columnNames = Object.keys(data['0']);
@@ -14,15 +29,17 @@ function showData(request) {
             titlesArr.push( { title: camelCaseToTitle(this) } );
         });
 
-        dataTable = $('#dataTable').DataTable( {
-            columns: titlesArr
-        });
+        options.columns = titlesArr;
+        options.scrollX = true;
+        options.destroy = true;
+
+        maddenTable = $('#maddenTable').DataTable(options);
 
         $.each(data, function() {
-            dataTable.row.add(Object.values(this));
+            maddenTable.row.add(Object.values(this));
         });
 
-        dataTable.draw();
+        maddenTable.draw();
     });
 }
 
