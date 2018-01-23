@@ -1,24 +1,26 @@
-var teamsTable;
+var dataTable;
 
 $(document).ready(function() {
-    createTable();
-    initialize();
+    showLeagueTeams();
 });
 
-function createTable() {
-    teamsTable = $('#teamsTable').DataTable( {
-        pageLength: 32
-    } );
-}
+function showLeagueTeams() {
+    $.getJSON('/leagueteams').then(function(data) {
 
-function initialize() {
-    teamsTable.clear();
+        var columnNames = Object.keys(data['0']);
+        var titlesArr = [];
 
-    $.getJSON('/data').then(function(data) {
-
-        $.each(data, function() {
-            teamsTable.row.add([this.teamId, this.cityName, this.displayName, this.injuryCount, this.ovrRating]);
+        $.each(columnNames, function() {
+            titlesArr.add( { title: this });
         });
+
+        dataTable = $('#dataTable').DataTable( {
+            columns: titlesArr
+        });
+
+        // $.each(data, function() {
+        //     teamsTable.row.add(this.);
+        // });
 
         teamsTable.draw();
     });
