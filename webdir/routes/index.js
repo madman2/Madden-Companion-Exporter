@@ -3,8 +3,8 @@ var admin = require('../firebase/firebase-admin')
 var router = express.Router();
 
 var db = admin.database();
-var leagueTeamsRef = db.ref("data/xbox/1494801/leagueteams/leagueTeamInfoList");
-var freeAgentsRef = db.ref("data/xbox/1494801/freeagents/rosterInfoList");
+var leagueTeamsRef = db.ref("data/xbox/1123033/leagueteams/leagueTeamInfoList");
+var freeAgentsRef = db.ref("data/xbox/1123033/freeagents/rosterInfoList");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
