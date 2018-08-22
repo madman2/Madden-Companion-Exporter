@@ -80,10 +80,11 @@ router.post('/:platform/:leagueId/freeagents/roster', (req, res) => {
   const {platform, leagueId} = req.params;
   const dataRef = ref.child(`data/${platform}/${leagueId}/freeagents`);
   const {body: {rosterInfoList}} = req;
-  res.sendStatus(202);
+
   dataRef.set({
     rosterInfoList
   });
+  res.sendStatus(200);
 });
 
 router.post('/:platform/:leagueId/team/:teamId/roster', (req, res) => {
@@ -92,10 +93,10 @@ router.post('/:platform/:leagueId/team/:teamId/roster', (req, res) => {
   const {platform, leagueId, teamId} = req.params;
   const dataRef = ref.child(`data/${platform}/${leagueId}/team/${teamId}`);
   const {body: {rosterInfoList}} = req;
-  res.sendStatus(202);
   dataRef.set({
     rosterInfoList
   });
+  res.sendStatus(200);
 });
 
 module.exports = router;
